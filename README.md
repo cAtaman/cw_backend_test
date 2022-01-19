@@ -6,12 +6,12 @@ API for The Software Engineer (Backend) role assessment
 
 - Clone this repo
 ```
-git clone https://github.com/cAtaman/cowrywise_test.git
+git clone https://github.com/cAtaman/cowrywise_backend_test.git
 ```
 
 - Navigate to the project's root and start a virtual environment 
 ```
-cd cowrywise_test
+cd cowrywise_backend_test
 ```
 
 - Create a virtual environment with python3
@@ -40,13 +40,13 @@ pip install -r requirements.txt
 ## To run the server 
 - Windows
 ```
-set FLASK_APP=setup.py:app
+set FLASK_APP=app.py:application
 flask run
 ```
 
 - Linux
 ```
-export FLASK_APP=setup.py:app
+export FLASK_APP=app.py:application
 flask run
 ```
 
