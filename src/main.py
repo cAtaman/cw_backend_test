@@ -1,8 +1,8 @@
 import uuid
 from datetime import datetime
 
-from models import Uuid, UuidSchema
-from setup import db
+from src.models import Uuid, UuidSchema
+from src.setup import db
 
 
 def generate_uuid():

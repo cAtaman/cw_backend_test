@@ -1,4 +1,4 @@
-from setup import db, ma
+from src.setup import db, ma
 
 
 class Uuid(db.Model):
