@@ -14,7 +14,7 @@ paths:
   /new:
     get:
       tags: [UUID]
-      operationId: src.get
+      operationId: src.main.get
       summary: Get UUID
       responses:
         200:
