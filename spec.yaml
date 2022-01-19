@@ -1,0 +1,30 @@
+swagger: "2.0"
+info:
+  title: UUID Generator
+  description: Generates random UUIDs with a timestamp
+  version: 1.0.0
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+
+paths:
+  /new:
+    get:
+      tags: [UUID]
+      operationId: src.get
+      summary: Get UUID
+      responses:
+        200:
+          description: Returns a dictionary of the new UUID with all older ones
+          schema:
+            $ref: '#/definitions/UUID_Dict'
+        400:
+          description: Something went wrong
+
+definitions:
+  UUID_Dict:
+    type: object
+    properties: {}
