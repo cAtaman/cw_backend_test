@@ -14,20 +14,17 @@ git clone https://github.com/cAtaman/cowrywise_backend_test.git
 cd cowrywise_backend_test
 ```
 
-- Create a virtual environment with python3
-```bash
-python3 -m virtualenv venv
-```
-
-- Activate the virtual environment with the following command:
+- Create and activate the virtual environment with the following commands:
 
   - Linux 
     ```bash
+    python3 -m virtualenv venv
     source venv/bin/activate
     ```
 
   - Windows
     ```cmd
+    python -m virtualenv venv
     venv\Scripts\activate
     ```
 
