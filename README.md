@@ -1,4 +1,4 @@
-# cowrywise_test
+# cowrywise_backend_test
 API for The Software Engineer (Backend) role assessment
 
 
