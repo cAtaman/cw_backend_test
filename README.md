@@ -28,7 +28,7 @@ python3 -m virtualenv venv
 
   - Windows
     ```cmd
-    venv/Scripts/activate
+    venv\Scripts\activate
     ```
 
 
