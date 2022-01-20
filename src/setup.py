@@ -8,19 +8,32 @@ from flask_marshmallow import Marshmallow
 #                       INITIALISE CONSTANTS
 # =================================================================
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-DB_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite')
+DEFAULT_DB_PATH = os.path.join(BASE_DIR, 'db.sqlite')
+
+
+# =================================================================
+#                          APP FACTORY
+# =================================================================
+def create_app(
+        db_path: str = DEFAULT_DB_PATH,
+        spec_dir: str = BASE_DIR
+) -> connexion.App:
+    connex_app = connexion.App("UUID_GEN", specification_dir=spec_dir)
+    db_uri = 'sqlite:///' + db_path
+    connex_app.app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+    connex_app.app.config['SECRET_KEY'] = secrets.token_hex(32)
+    connex_app.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+    connex_app.app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
+    # to preserve the sort order of json objects
+    connex_app.app.config['JSON_SORT_KEYS'] = False
+    return connex_app
+
 
 # =================================================================
 #                         SETUP FLASK APP
 # =================================================================
-connex_app = connexion.App("UUID_GEN", specification_dir=BASE_DIR)
-app = connex_app.app
-app.config['SQLALCHEMY_DATABASE_URI'] = DB_URI
-app.config['SECRET_KEY'] = secrets.token_hex(32)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
-# to preserve the sort order of json objects
-app.config['JSON_SORT_KEYS'] = False
+connexion_app = create_app()
+app = connexion_app.app  # flask app object
 
 # =================================================================
 #                         INITIALISE OBJECTS
@@ -31,4 +44,4 @@ ma = Marshmallow(app)
 # =================================================================
 #                          ADD SWAGGER APIs
 # =================================================================
-connex_app.add_api(os.path.join(BASE_DIR, 'spec.yaml'))
+connexion_app.add_api(os.path.join(BASE_DIR, 'spec.yaml'))
